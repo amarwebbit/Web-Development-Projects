@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Countdown to [NIKHIL KUSHWAHA (A Member of Road to engineer group)] Birthday!</h1>
+        <div id="countdown"></div>
+    </div>
+
+    <script>
+        function countdownTimer() {
+            const birthday = new Date("2025-01-29").getTime();
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = birthday - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").innerHTML = "HAPPY BIRTHDAY!";
+                }
+            }, 1000);
+        }
+        countdownTimer();
+    </script>
+</body>
+</html>
